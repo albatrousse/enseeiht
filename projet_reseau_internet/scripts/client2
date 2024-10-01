@@ -1,0 +1,6 @@
+#!/bin/bash
+ip link set eth0 up
+
+ip a a 192.168.4.66/26 dev eth0
+
+ip route add default via 192.168.4.65

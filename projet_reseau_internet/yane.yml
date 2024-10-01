@@ -1,0 +1,78 @@
+network:
+  name: projet
+  version: 0.1
+  hosts:
+    - serveurWebUtilisateur
+      mode : docker
+      image : apache_n7:latest
+      files : ./files/serveurWebUtilisateur/var:/
+ 
+    - client1
+      mode : netns
+      init : ./scripts/client1
+ 
+ 
+    - client2
+      mode : netns
+      init : ./scripts/client2
+ 
+    - routeurFAI_Acces
+      mode : docker
+      image : quagga_n7:latest
+      files : ./files/routeurFAI_Acces/etc:/
+ 
+ 
+    - R1
+      mode : docker
+      image : quagga_n7:latest
+      files : ./files/R1/etc:/
+ 
+    - R2
+      mode : docker
+      image : quagga_n7:latest
+      files : ./files/R2/etc:/
+ 
+ 
+    - routeurFAI_Services
+      mode : docker
+      image : quagga_n7:latest
+      files : ./files/routeurFAI_Services/etc:/
+ 
+ 
+    - serveurDNS
+      mode : docker
+      image : dns_n7:latest
+      files : ./files/serveurDNS/etc:/
+ 
+    - serveurWeb
+      mode : docker
+      image : apache_n7:latest
+      files : ./files/serveurWeb/var:/
+ 
+    - box2
+      mode : docker
+      image : dhcp_n7:latest
+      files : ./files/box2/etc:/
+ 
+    - box1
+      mode : docker
+      image : dhcp_n7:latest
+      files : ./files/box1/etc:/
+ 
+  links :
+    - client2:eth0!box2:eth0
+    - box2:eth1!routeurFAI_Acces:eth1
+    - box1:eth1!routeurFAI_Acces:eth0
+ 
+  bridges:
+    - Switch0
+      interfaces: box1:eth0!client1:eth0!serveurWebUtilisateur:eth0!
+    - Switch1
+      interfaces: R1:eth0!R2:eth0!routeurFAI_Acces:eth2!
+    - Switch2
+      interfaces: R1:eth1!R2:eth1!routeurFAI_Services:eth0!
+    - Switch3
+      interfaces: routeurFAI_Services:eth1!serveurDNS:eth0!serveurWeb:eth0!
+ 
+  consoles :
+    - all

@@ -1,0 +1,20 @@
+#!/bin/bash
+
+ip link set eth0 up
+
+ip a a 5.5.5.1/27 dev eth0
+
+ip link set eth1 up
+
+ip a a 5.5.5.33/27 dev eth1
+
+ip link set eth2 up 
+
+ip a a 5.5.5.65/26 dev eth2
+
+ip route add default via 5.5.5.66
+
+ip route add 192.168.4.0/26 via 5.5.5.2
+
+ip route add 192.168.4.64/26 via 5.5.5.34
+
