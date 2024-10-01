@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Menu",
+            "request": "launch",
+            "mainClass": "code.Menu",
+            "projectName": "projet_echec"
+        },
+        {
+            "type": "java",
+            "name": "Launch Java Program",
+            "request": "launch",
+            "mainClass": "HelloWorld"
+        }
+    ]
+}
