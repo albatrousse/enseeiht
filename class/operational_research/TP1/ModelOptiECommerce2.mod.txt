@@ -1,0 +1,45 @@
+###############################  Model ###############################
+
+
+###############################  Sets  ###############################
+
+set DESTINATION;
+
+set CLIENT;
+
+################### Variables ###################
+
+var Trajet{i in DESTINATION, j in DESTINATION}, binary;
+
+var Arc{i in CLIENT};
+
+###################  Constants: Data to load   #########################
+
+param Distance{i in DESTINATION, j in DESTINATION};
+
+param nombreDeClients;
+
+################### Constraints ###################
+
+s.t. VisiteUniqueDeChaqueClient {j in DESTINATION}:
+    sum{i in DESTINATION : i != j} Trajet[i, j] = 1;
+
+s.t. DepartUniqueDepuisChaqueClient {i in DESTINATION}:
+    sum{j in DESTINATION : j != i} Trajet[i, j] = 1;
+
+s.t. NonSurPlace {i in DESTINATION}:
+    Trajet[i, i] = 0;
+
+s.t. ChoixTrajet {i in CLIENT, j in CLIENT: i != j}:
+    Arc[j] + (nombreDeClients - 1) >= Arc[i] + nombreDeClients * Trajet[i, j];
+
+s.t. domaineArc {i in CLIENT}:
+    nombreDeClients >= Arc[i] >= 1;
+
+
+###### Objective ######
+
+minimize DistanceParcourue : 
+    sum{i in DESTINATION, j in DESTINATION} Trajet[i, j] * Distance[i, j];
+
+end;

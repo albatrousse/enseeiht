@@ -1,0 +1,15 @@
+\* Problème: Assemblage de vélos *\
+
+Maximize
+    Benefice: 700 XC + 300 XS
+
+Subject To
+    TempsHebdomadaire: + 6 XC + 5 XS <= 6000
+    LimiteFabricationCargo: + XC <= 700
+    CapaciteDeStockage: + 2.5 XC + XS <= 1500
+
+Integer
+    XC
+    XS
+
+End

@@ -1,0 +1,178 @@
+Problem:    ModelOptiECommerce2
+Rows:       44
+Columns:    41 (36 integer, 36 binary)
+Non-zeros:  161
+Status:     INTEGER OPTIMAL
+Objective:  DistanceParcourue = 22 (MINimum)
+
+   No.   Row name        Activity     Lower bound   Upper bound
+------ ------------    ------------- ------------- -------------
+     1 VisiteUniqueDeChaqueClient[A]
+                                   1             1             = 
+     2 VisiteUniqueDeChaqueClient[C1]
+                                   1             1             = 
+     3 VisiteUniqueDeChaqueClient[C2]
+                                   1             1             = 
+     4 VisiteUniqueDeChaqueClient[C3]
+                                   1             1             = 
+     5 VisiteUniqueDeChaqueClient[C4]
+                                   1             1             = 
+     6 VisiteUniqueDeChaqueClient[C5]
+                                   1             1             = 
+     7 DepartUniqueDepuisChaqueClient[A]
+                                   1             1             = 
+     8 DepartUniqueDepuisChaqueClient[C1]
+                                   1             1             = 
+     9 DepartUniqueDepuisChaqueClient[C2]
+                                   1             1             = 
+    10 DepartUniqueDepuisChaqueClient[C3]
+                                   1             1             = 
+    11 DepartUniqueDepuisChaqueClient[C4]
+                                   1             1             = 
+    12 DepartUniqueDepuisChaqueClient[C5]
+                                   1             1             = 
+    13 NonSurPlace[A]
+                                   0            -0             = 
+    14 NonSurPlace[C1]
+                                   0            -0             = 
+    15 NonSurPlace[C2]
+                                   0            -0             = 
+    16 NonSurPlace[C3]
+                                   0            -0             = 
+    17 NonSurPlace[C4]
+                                   0            -0             = 
+    18 NonSurPlace[C5]
+                                   0            -0             = 
+    19 ChoixTrajet[C1,C2]
+                                  -4            -4               
+    20 ChoixTrajet[C1,C3]
+                                  -1            -4               
+    21 ChoixTrajet[C1,C4]
+                                  -2            -4               
+    22 ChoixTrajet[C1,C5]
+                                  -3            -4               
+    23 ChoixTrajet[C2,C1]
+                                   4            -4               
+    24 ChoixTrajet[C2,C3]
+                                   3            -4               
+    25 ChoixTrajet[C2,C4]
+                                   2            -4               
+    26 ChoixTrajet[C2,C5]
+                                  -4            -4               
+    27 ChoixTrajet[C3,C1]
+                                  -4            -4               
+    28 ChoixTrajet[C3,C2]
+                                  -3            -4               
+    29 ChoixTrajet[C3,C4]
+                                  -1            -4               
+    30 ChoixTrajet[C3,C5]
+                                  -2            -4               
+    31 ChoixTrajet[C4,C1]
+                                   2            -4               
+    32 ChoixTrajet[C4,C2]
+                                  -2            -4               
+    33 ChoixTrajet[C4,C3]
+                                  -4            -4               
+    34 ChoixTrajet[C4,C5]
+                                  -1            -4               
+    35 ChoixTrajet[C5,C1]
+                                   3            -4               
+    36 ChoixTrajet[C5,C2]
+                                  -1            -4               
+    37 ChoixTrajet[C5,C3]
+                                   2            -4               
+    38 ChoixTrajet[C5,C4]
+                                  -4            -4               
+    39 domaineArc[C1]
+                                   5             1             5 
+    40 domaineArc[C2]
+                                   1             1             5 
+    41 domaineArc[C3]
+                                   4             1             5 
+    42 domaineArc[C4]
+                                   3             1             5 
+    43 domaineArc[C5]
+                                   2             1             5 
+    44 DistanceParcourue
+                                  22                             
+
+   No. Column name       Activity     Lower bound   Upper bound
+------ ------------    ------------- ------------- -------------
+     1 Trajet[C1,A] *              1             0             1 
+     2 Trajet[C2,A] *              0             0             1 
+     3 Trajet[C3,A] *              0             0             1 
+     4 Trajet[C4,A] *              0             0             1 
+     5 Trajet[C5,A] *              0             0             1 
+     6 Trajet[A,C1] *              0             0             1 
+     7 Trajet[C2,C1]
+                    *              0             0             1 
+     8 Trajet[C3,C1]
+                    *              1             0             1 
+     9 Trajet[C4,C1]
+                    *              0             0             1 
+    10 Trajet[C5,C1]
+                    *              0             0             1 
+    11 Trajet[A,C2] *              1             0             1 
+    12 Trajet[C1,C2]
+                    *              0             0             1 
+    13 Trajet[C3,C2]
+                    *              0             0             1 
+    14 Trajet[C4,C2]
+                    *              0             0             1 
+    15 Trajet[C5,C2]
+                    *              0             0             1 
+    16 Trajet[A,C3] *              0             0             1 
+    17 Trajet[C1,C3]
+                    *              0             0             1 
+    18 Trajet[C2,C3]
+                    *              0             0             1 
+    19 Trajet[C4,C3]
+                    *              1             0             1 
+    20 Trajet[C5,C3]
+                    *              0             0             1 
+    21 Trajet[A,C4] *              0             0             1 
+    22 Trajet[C1,C4]
+                    *              0             0             1 
+    23 Trajet[C2,C4]
+                    *              0             0             1 
+    24 Trajet[C3,C4]
+                    *              0             0             1 
+    25 Trajet[C5,C4]
+                    *              1             0             1 
+    26 Trajet[A,C5] *              0             0             1 
+    27 Trajet[C1,C5]
+                    *              0             0             1 
+    28 Trajet[C2,C5]
+                    *              1             0             1 
+    29 Trajet[C3,C5]
+                    *              0             0             1 
+    30 Trajet[C4,C5]
+                    *              0             0             1 
+    31 Trajet[A,A]  *              0             0             1 
+    32 Trajet[C1,C1]
+                    *              0             0             1 
+    33 Trajet[C2,C2]
+                    *              0             0             1 
+    34 Trajet[C3,C3]
+                    *              0             0             1 
+    35 Trajet[C4,C4]
+                    *              0             0             1 
+    36 Trajet[C5,C5]
+                    *              0             0             1 
+    37 Arc[C2]                     1                             
+    38 Arc[C1]                     5                             
+    39 Arc[C3]                     4                             
+    40 Arc[C4]                     3                             
+    41 Arc[C5]                     2                             
+
+Integer feasibility conditions:
+
+KKT.PE: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+KKT.PB: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+End of output

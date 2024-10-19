@@ -1,0 +1,29 @@
+# Données dans le cas où il y a 3 personnes
+# Les données sont tirées de la figure 1 de la partie 2.3 du polycopié
+
+data;
+
+set DESTINATION :=
+A
+C1
+C2
+C3
+C4
+C5;
+
+set CLIENT := 
+C1
+C2
+C3
+C4
+C5;
+
+param Distance : A C1 C2 C3 C4 C5 := 
+A   0 1 1 10 12 12
+C1  1 0 1 8 10 11
+C2  1 1 0 8 11 10
+C3  10 8 8 0 1 1
+C4  12 10 11 1 0 1
+C5  12 11 10 1 1 0;
+
+param nombreDeClients := 5;

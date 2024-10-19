@@ -1,0 +1,47 @@
+###############################  Model ###############################
+
+
+###############################  Sets  ###############################
+
+set DEMANDES;
+
+set MAGASINS;
+
+set FLUIDES;
+
+################### Variables ###################
+
+var Choix{f in FLUIDES, d in DEMANDES, m in MAGASINS}, >= 0;
+
+var Colis{m in MAGASINS, d in DEMANDES}, binary;
+
+
+###################  Constants: Data to load   #########################
+
+param Commande{d in DEMANDES, f in FLUIDES};
+
+param Stock{m in MAGASINS, f in FLUIDES};
+
+param CoutFixe{m in MAGASINS, d in DEMANDES};
+
+param CoutVar{m in MAGASINS, d in DEMANDES};
+
+################### Constraints ###################
+
+s.t. RespectStock {m in MAGASINS, f in FLUIDES}:
+    sum{d in DEMANDES} Choix[f, d, m] <= Stock[m, f];
+
+s.t. RespectCommande {f in FLUIDES, d in DEMANDES}:
+    sum{m in MAGASINS} Choix[f, d, m] = Commande[d, f];
+
+s.t. AffectationColis {m in MAGASINS, d in DEMANDES}:
+    sum{f in FLUIDES} Choix[f, d, m] <= Colis[m, d] * CoutFixe[m, d];
+
+###### Objective ######
+
+minimize CoutGlobal : 
+
+    sum{d in DEMANDES, m in MAGASINS} Colis[m, d] * CoutFixe[m, d] +
+    sum{f in FLUIDES, d in DEMANDES, m in MAGASINS} Choix[f, d, m] * CoutVar[m, d];
+
+end;

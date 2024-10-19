@@ -1,0 +1,19 @@
+# Données dans le cas où il y a 3 personnes
+# Les données sont tirées de la figure 1 de la partie 2.3 du polycopié
+
+data;
+
+set PERSONNES := 
+P1
+P2
+P3;
+
+set TACHES := 
+T1
+T2
+T3;
+
+param Note : T1 T2 T3 :=
+P1 4 7 9
+P2 9 8 3 
+P3 2 1 2;

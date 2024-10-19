@@ -1,0 +1,37 @@
+###############################  Model ###############################
+
+
+###############################  Sets  ###############################
+
+set DEMANDES;
+
+set MAGASINS;
+
+set FLUIDES;
+
+################### Variables ###################
+
+var Choix{f in FLUIDES, d in DEMANDES, m in MAGASINS}, >= 0;
+
+###################  Constants: Data to load   #########################
+
+param Commande{d in DEMANDES, f in FLUIDES};
+
+param Stock{m in MAGASINS, f in FLUIDES};
+
+param Cout{m in MAGASINS, f in FLUIDES};
+
+################### Constraints ###################
+
+s.t. RespectStock {m in MAGASINS, f in FLUIDES}:
+    sum{d in DEMANDES} Choix[f, d, m] <= Stock[m, f];
+
+s.t. RespectCommande {f in FLUIDES, d in DEMANDES}:
+    sum{m in MAGASINS} Choix[f, d, m] = Commande[d, f];
+
+###### Objective ######
+
+minimize CoutGlobal : 
+    sum{m in MAGASINS, f in FLUIDES} (sum{d in DEMANDES} Choix[f, d, m]) * Cout[m, f];
+
+end;
